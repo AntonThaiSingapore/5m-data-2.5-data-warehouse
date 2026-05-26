@@ -1,4 +1,4 @@
-SELECT DISTINCT
+SELECT
     station_id,
     name,
     status,
@@ -15,5 +15,6 @@ SELECT DISTINCT
     council_district,
     image,
     modified_date
-FROM {{ source('austin_bikeshare', 'bikeshare_stations') }}
+FROM {{ ref('station_snapshot') }}
+WHERE dbt_valid_to IS NULL
   
