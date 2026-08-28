@@ -11,7 +11,7 @@
 
 SELECT
     trip_id,
-    bikeid,
+    bike_id,
     subscriber_type,
     start_time,
     duration_minutes,
