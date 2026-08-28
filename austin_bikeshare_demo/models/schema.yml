@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_station
+    description: "Dimension table for Austin Bikeshare stations."
+    columns:
+      - name: station_id
+        description: "The primary key for the station."
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_trips
+    description: "Fact table for Austin Bikeshare trips."
+    columns:
+      - name: trip_id
+        description: "The primary key for the trip."
+        tests:
+          - unique
+          - not_null
+      - name: start_station_id
+        description: "Foreign key linking to the start station."
+        tests:
+          - relationships:
+              to: ref('dim_station')
+              field: station_id
+      - name: end_station_id
+        description: "Foreign key linking to the end station."
+        tests:
+          - relationships:
+              to: ref('dim_station')
+              field: station_id
